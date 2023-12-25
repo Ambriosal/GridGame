@@ -1,11 +1,18 @@
 plugins {
     id 'java'
+    id 'checkstyle'
 }
 
 
 repositories {
     jcenter()
 }
+
+checkstyle {
+    configFile = file("checkstyle.xml")
+    ignoreFailures = false
+}
+
 
 dependencies {
     implementation 'com.formdev:flatlaf:0.46'
