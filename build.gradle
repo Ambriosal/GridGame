@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.formdev:flatlaf:0.46'
+}
+
+task echo;
+
+echo.doFirst {
+    println "To run the program from jar:\njava -jar build/libs/Grid.jar"
+    println "To run the program from class files:\njava -cp build/classes/java/main/ main.java.grid.Main"
+}
+
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+    archiveBaseName = 'GridGame'
+}

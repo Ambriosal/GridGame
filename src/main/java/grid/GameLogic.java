@@ -1,10 +1,10 @@
-package main.java;
+package main.java.grid;
 
 public class GameLogic {
 
     /* FIELDS */
 
-    private char mode = 'e';
+    private ModeSelection mode = new ModeSelection();
     private boolean won = false;
 
 
@@ -13,12 +13,9 @@ public class GameLogic {
     }
 
     private char getMode() {
-        return mode;
+        return mode.getMode();
     }
     
-    private void setMode (char diff){
-        mode = diff;
-    }
 
     private boolean getWon(){
         return won;
@@ -29,10 +26,17 @@ public class GameLogic {
     }
 
     public void win(){ // win method
+        int row = 0;
+        int col = 0;
 
-        if (mode == 'e'){ //easy mode is selected
-            
+        for (int i = 0; i < row; i++){
+            for (int j = 0; j < col; j ++){
+
+                // if(mode.changeDifficulty(getMode())[i][j] != 3 )
+
+            }
         }
+
 
     }
     

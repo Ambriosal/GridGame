@@ -1,25 +1,16 @@
-package main.java;
+package main.java.grid;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JProgressBar;
 
 public class Hard {
+
     // *****HARD MODE GRID, 8 by 8
-	int moveH = 0;
-	int rowH = 8;
-	int colH = 8;
-	int curH = 7;
-	int lvlH = 1;
-	// move counter
-	JLabel movesH;
-	int countH = 0;
-	// progress bar
-	JProgressBar progressH;
-	int iH = 33;
-	JButton aH[] = new JButton[rowH * colH];
+	private int moveCounter = 0;
+	private int level = 0;
+	private int progress = 33;
+
+
 	// original grid
-	int bH[][] = { { 1, 0, 0, 0, 0, 0, 0, 3 },
+	int grid[][] = { { 1, 0, 0, 0, 0, 0, 0, 3 },
 			{ 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 11, 0, 5, 0, 0 },
 			{ 0, 0, 0, 0, 0, 0, 2, 3 },
@@ -27,7 +18,7 @@ public class Hard {
 			{ 0, 0, 2, 0, 0, 0, 1, 0 },
 			{ 11, 0, 0, 0, 4, 0, 4, 0 },
 			{ 0, 0, 0, 0, 0, 0, 0, 0 } };
-	int ansH[][] = { { 1, 7, 7, 7, 7, 7, 7, 3 },
+	int ans[][] = { { 1, 7, 7, 7, 7, 7, 7, 3 },
 			{ 6, 7, 10, 10, 10, 10, 7, 8 },
 			{ 6, 7, 10, 11, 12, 5, 7, 8 },
 			{ 6, 7, 10, 10, 12, 12, 2, 3 },
@@ -35,7 +26,7 @@ public class Hard {
 			{ 6, 6, 2, 6, 6, 6, 1, 12 },
 			{ 11, 6, 6, 6, 4, 9, 4, 12 },
 			{ 12, 12, 12, 12, 12, 12, 12, 12 } };
-	int resetH[][] = { { 1, 0, 0, 0, 0, 0, 0, 3 },
+	int reset[][] = { { 1, 0, 0, 0, 0, 0, 0, 3 },
 			{ 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 11, 0, 5, 0, 0 },
 			{ 0, 0, 0, 0, 0, 0, 2, 3 },
@@ -44,7 +35,7 @@ public class Hard {
 			{ 11, 0, 0, 0, 4, 0, 4, 0 },
 			{ 0, 0, 0, 0, 0, 0, 0, 0 } };
 	// level 1 of hard
-	int lvl1H[][] = { { 1, 0, 0, 0, 0, 0, 0, 3 },
+	int lvl1[][] = { { 1, 0, 0, 0, 0, 0, 0, 3 },
 			{ 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 11, 0, 5, 0, 0 },
 			{ 0, 0, 0, 0, 0, 0, 2, 3 },
@@ -53,7 +44,7 @@ public class Hard {
 			{ 11, 0, 0, 0, 4, 0, 4, 0 },
 			{ 0, 0, 0, 0, 0, 0, 0, 0 } };
 
-	int ans1H[][] = { { 1, 7, 7, 7, 7, 7, 7, 3 },
+	int ans1[][] = { { 1, 7, 7, 7, 7, 7, 7, 3 },
 			{ 6, 7, 10, 10, 10, 10, 7, 8 },
 			{ 6, 7, 10, 11, 12, 5, 7, 8 },
 			{ 6, 7, 10, 10, 12, 12, 2, 3 },
@@ -62,7 +53,7 @@ public class Hard {
 			{ 11, 6, 6, 6, 4, 9, 4, 12 },
 			{ 12, 12, 12, 12, 12, 12, 12, 12 } };
 	// level 2 of hard
-	int lvl2H[][] = { { 0, 0, 0, 2, 0, 3, 4, 5 },
+	int lvl2[][] = { { 0, 0, 0, 2, 0, 3, 4, 5 },
 			{ 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0, 0, 5, 0 },
 			{ 0, 0, 0, 0, 0, 0, 0, 11 },
@@ -71,7 +62,7 @@ public class Hard {
 			{ 0, 1, 0, 0, 0, 0, 0, 11 },
 			{ 0, 0, 0, 0, 0, 0, 0, 3 } };
 
-	int ans2H[][] = { { 7, 7, 7, 2, 8, 3, 4, 5 },
+	int ans2[][] = { { 7, 7, 7, 2, 8, 3, 4, 5 },
 			{ 7, 8, 8, 8, 8, 9, 9, 10 },
 			{ 7, 8, 9, 9, 9, 9, 5, 10 },
 			{ 7, 8, 9, 8, 8, 8, 8, 11 },
@@ -80,7 +71,7 @@ public class Hard {
 			{ 7, 1, 6, 6, 6, 7, 8, 11 },
 			{ 7, 7, 7, 7, 7, 7, 8, 3 } };
 	// level three of hard
-	int lvl3H[][] = { { 2, 0, 0, 0, 0, 0, 5, 2 },
+	int lvl3[][] = { { 2, 0, 0, 0, 0, 0, 5, 2 },
 			{ 0, 0, 0, 0, 4, 0, 0, 0 },
 			{ 0, 0, 0, 0, 3, 0, 0, 0 },
 			{ 0, 0, 11, 0, 1, 0, 0, 0 },
@@ -89,7 +80,7 @@ public class Hard {
 			{ 0, 0, 3, 1, 0, 0, 5, 0 },
 			{ 0, 0, 0, 0, 0, 0, 0, 0 } };
 
-	int ans3H[][] = { { 2, 7, 7, 7, 7, 7, 5, 2 },
+	int ans3[][] = { { 2, 7, 7, 7, 7, 7, 5, 2 },
 			{ 9, 9, 9, 9, 4, 7, 10, 7 },
 			{ 9, 8, 8, 8, 3, 7, 10, 7 },
 			{ 9, 8, 11, 6, 1, 7, 10, 7 },
@@ -99,8 +90,69 @@ public class Hard {
 			{ 9, 9, 9, 9, 9, 7, 7, 7 } };
 
 
-     Hard(){
+     Hard(){ //def constructor
 
     }
+
+	 void setLevel(int lvl){
+        level = lvl;
+    }
+
+     int getLevel(){
+        return level;
+
+    }
+
+     int[][] getGrid(){ //returns grid for specified levl
+
+        if(level == 1){
+            return lvl1;
+        }
+        else if (level == 2){
+            return lvl2;
+        }
+        else{
+            return lvl3;
+        }
+
+    }
+
+	 void setProgress(int p){
+        progress = p;
+    }
+
+     int getProgress(){
+        return progress;
+    }
+
+     int[][] getResetGrid(){
+        return reset;
+    }
+
+     void setResetGrid(int [][] newR){
+        reset = newR;
+
+    }
+
+     int[][] getAnswerGrid(){
+        return ans;
+    }
+
+     void setAnswerGrid(int [][] newA){
+        ans = newA;
+    }
+
+	int getMoveCount(){
+        return moveCounter;
+    }
+
+    void updateMove(int m){
+        moveCounter = m;
+    }
+
+    void updateMove(){
+        moveCounter++;
+    }
+
     
 }

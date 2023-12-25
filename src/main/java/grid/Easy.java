@@ -1,32 +1,14 @@
-package main.java;
+package main.java.grid;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JProgressBar;
-import java.util.ArrayList;
 
 public class Easy {
 
     /* FIELDS */
 
-    // private char mode = 'e';
-    private int move = 0;
-    private int row = 5;
-    private int col = 5;
-    private int current = 7;
+    private int moveCounter = 0;
+    private int level = 0;
+    private int progress = 33; 
     
-
-    //move counter
-    JLabel moves;
-	int count = 0;
-	// progress bar
-	JProgressBar progress;
-	int i = 33;
-	JButton a[] = new JButton[row * col];
-
-
-    //
-    int level = 0; 
 
     // Grids
 
@@ -85,19 +67,19 @@ public class Easy {
 
 
     Easy(){
-
+        //default constructor
     }
 
-    private void setLevel(int lvl){
+     void setLevel(int lvl){
         level = lvl;
     }
 
-    private int getLevel(){
+     int getLevel(){
         return level;
 
     }
 
-    private int[][] getGridLevel(){
+     int[][] getGrid(){ //returns grid for specified levl
 
         if(level == 1){
             return lvl1;
@@ -111,15 +93,47 @@ public class Easy {
 
     }
 
-    void setGrid(int[][] lvl){
-    
+    void setGrid(int [][] grLvl){
+        grid = grLvl;
 
     }
 
-    int[][] getGrid(){
+     void setProgress(int p){
+        progress = p;
+    }
+
+     int getProgress(){
+        return progress;
+    }
+
+     int[][] getResetGrid(){
+        return reset;
+    }
+
+     void setResetGrid(int [][] newR){
+        reset = newR;
+
+    }
+
+     int[][] getAnswerGrid(){
+        return ans;
+    }
+
+     void setAnswerGrid(int [][] newA){
+        ans = newA;
+    }
 
 
-        return grid;
+     int getMoveCount(){
+        return moveCounter;
+    }
+
+    void updateMove(int m){
+        moveCounter = m;
+    }
+
+    void updateMove(){
+        moveCounter++;
     }
 
 }

@@ -1,4 +1,4 @@
-package main.java;
+package main.java.grid;
 
 public class ModeSelection {
 
@@ -9,8 +9,11 @@ public class ModeSelection {
     private Med med = new Med();
     private Hard hard = new Hard();
 
-    void setMode (char m){
 
+
+    ModeSelection(){}
+
+    void setMode (char m){
         mode = m;
     }
 
@@ -18,16 +21,16 @@ public class ModeSelection {
         return mode;
     }
 
-    void changeDifficulty(char mode){
+    int[][] changeDifficulty(char mode){
 
         if (mode == 'e'){
-            easy.getGrid();
+            return easy.getGrid();
         }
         else if (mode == 'm'){
-            med.getGrid();
+            return med.getGrid();
         }
         else{
-            hard.getGrid();
+            return hard.getGrid();
         }
     }
 
