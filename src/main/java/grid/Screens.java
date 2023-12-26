@@ -1,4 +1,4 @@
-package main.java.grid;
+package grid;
 
 public class Screens {
     

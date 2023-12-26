@@ -1,4 +1,4 @@
-package main.java.grid;
+package grid;
 
 
 
@@ -7,8 +7,8 @@ public class Med {
     /* FIELDS */
 
     private int moveCounter = 0;
-	private int level = 0;
-	private int progress = 33;
+	private static int level = 0;
+	private static int progress = 33;
 
 
 

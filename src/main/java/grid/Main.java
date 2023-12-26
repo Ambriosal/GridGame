@@ -1,4 +1,4 @@
-package main.java.grid;
+package grid;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,10 +63,43 @@ public class Main {
             cardPanel.add(labelPanel, "mainLabel"); 
             ///
             
-            //
-            JLabel pee = new JLabel ("Easy mode here!");            
+            //easyyy
+
+
+            //grid in easy
+            Easy easyO = new Easy();
+            Display displayEasy = new Display();
+            JPanel ezPanel = new JPanel(new GridLayout(5, 5));
+
+            int[][] easyArray = easyO.getGrid();
+
+
+            JButton[][] easyGrid = displayEasy.displayGrid(easyArray, 5, 5);
+
+            for (int i = 0; i < easyGrid.length; i++) {
+                for (int j = 0; j < easyGrid[0].length; j++) {
+                    ezPanel.add(easyGrid[i][j]);
+                }
+            }
+            
+            // new Jpanel to hold ALL of EZ panel
+            JPanel easyCompPanel = new JPanel();
+            easyCompPanel.setLayout(new BorderLayout());
+            //ading label to top of compez panel
+            JLabel ezLabelTitle = new JLabel ("Easy mode here!"); 
+            easyCompPanel.add(ezLabelTitle, BorderLayout.NORTH);
+
+            //add grid to comp ez panel
+
+            ezLabelTitle.add(ezPanel, BorderLayout.CENTER);
+
+
+
+
             JPanel easyPanel = new JPanel();
-            easyPanel.add(pee);
+
+
+            easyPanel.add(easyCompPanel);
             cardPanel.add(easyPanel, "easyScreen");
 
             //
@@ -89,7 +122,7 @@ public class Main {
             cardLayout.show(cardPanel, "mainLabel");
 
             // Set the size of the JFrame
-            frame.setSize(200, 200);
+            frame.setSize(700, 800);
 
             // Set the JFrame to be visible
             frame.setVisible(true);
