@@ -1,8 +1,16 @@
 package grid;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 
 public class Main {
@@ -29,24 +37,24 @@ public class Main {
             JButton easy = new JButton("Easy Mode");
             easy.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed (ActionEvent e){
+                public void actionPerformed(ActionEvent e){
                     label.setText("Easy mode here");
                     cardLayout.show(cardPanel, "easyScreen");
                 }
             });
 
-            JButton med = new JButton ("Medium Mode");
+            JButton med = new JButton("Medium Mode");
             med.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed (ActionEvent e){
+                public void actionPerformed(ActionEvent e){
                     cardLayout.show(cardPanel, "medScreen");
                 }
             });
 
-            JButton hard = new JButton ("Hard Mode");
+            JButton hard = new JButton("Hard Mode");
             hard.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed (ActionEvent e){
+                public void actionPerformed(ActionEvent e){
                     cardLayout.show(cardPanel, "hardScreen");
                 }
             });
@@ -85,13 +93,14 @@ public class Main {
             // new Jpanel to hold ALL of EZ panel
             JPanel easyCompPanel = new JPanel();
             easyCompPanel.setLayout(new BorderLayout());
+
             //ading label to top of compez panel
-            JLabel ezLabelTitle = new JLabel ("Easy mode here!"); 
+            JLabel ezLabelTitle = new JLabel("Easy mode here!"); 
             easyCompPanel.add(ezLabelTitle, BorderLayout.NORTH);
 
             //add grid to comp ez panel
 
-            ezLabelTitle.add(ezPanel, BorderLayout.CENTER);
+            easyCompPanel.add(ezPanel, BorderLayout.CENTER);
 
 
 
@@ -103,13 +112,13 @@ public class Main {
             cardPanel.add(easyPanel, "easyScreen");
 
             //
-            JLabel peep = new JLabel ("Medium mode here!");            
+            JLabel peep = new JLabel("Medium mode here!");            
             JPanel medPanel = new JPanel();
             medPanel.add(peep);
             cardPanel.add(medPanel, "medScreen");
             //            
             JPanel hardPanel = new JPanel();
-            JLabel poop = new JLabel ("Hard mode is here!");
+            JLabel poop = new JLabel("Hard mode is here!");
             hardPanel.add(poop);
             cardPanel.add(hardPanel, "hardScreen");
 

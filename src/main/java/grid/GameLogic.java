@@ -28,11 +28,15 @@ public class GameLogic {
     public void win(){ // win method
         int row = 0;
         int col = 0;
+        getWon();
+        isWon(won);
 
         for (int i = 0; i < row; i++){
-            for (int j = 0; j < col; j ++){
+            for (int j = 0; j < col; j++){
 
-                // if(mode.changeDifficulty(getMode())[i][j] != 3 )
+                if(mode.changeDifficulty(getMode())[i][j] != 3){
+                    System.out.println("2");
+                }
 
             }
         }

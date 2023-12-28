@@ -13,7 +13,7 @@ public class ModeSelection {
 
     ModeSelection(){}
 
-    void setMode (char m){
+    void setMode(char m){
         mode = m;
     }
 
@@ -21,15 +21,13 @@ public class ModeSelection {
         return mode;
     }
 
-    int[][] changeDifficulty(char mode){
+    int[][] changeDifficulty(char modeSelect){
 
-        if (mode == 'e'){
+        if (modeSelect == 'e'){
             return easy.getGrid();
-        }
-        else if (mode == 'm'){
+        } else if (modeSelect == 'm'){
             return med.getGrid();
-        }
-        else{
+        }else{
             return hard.getGrid();
         }
     }
