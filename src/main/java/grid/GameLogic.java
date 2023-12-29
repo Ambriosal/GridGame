@@ -4,18 +4,14 @@ public class GameLogic {
 
     /* FIELDS */
 
-    private ModeSelection mode = new ModeSelection();
+    private GridState state = new GridState();
     private boolean won = false;
+
 
 
     public GameLogic(){
         //Default constructor
     }
-
-    private char getMode() {
-        return mode.getMode();
-    }
-    
 
     private boolean getWon(){
         return won;
@@ -25,23 +21,20 @@ public class GameLogic {
         won = w;
     }
 
-    public void win(){ // win method
-        int row = 0;
-        int col = 0;
-        getWon();
-        isWon(won);
+    void win(){ // win method
+        int size = state.gridSize();
 
-        for (int i = 0; i < row; i++){
-            for (int j = 0; j < col; j++){
-
-                if(mode.changeDifficulty(getMode())[i][j] != 3){
-                    System.out.println("2");
+        for (int i = 0; i < size; i++){
+            for (int j = 0; j < size; j++){
+                if(state.getCurrentGrid() == state.AnswerGrid()){
+                    System.out.println(" Grid completed.");
                 }
-
             }
         }
+    }
 
-
+    void move(){
+        
     }
     
 }

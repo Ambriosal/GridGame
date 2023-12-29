@@ -22,7 +22,7 @@ public class Med {
 
     }
 
-	int[][] getGrid(){
+    int[][] getGrid(){
 
         if (level == 1) {
             return new int[][]{{4, 0, 0, 0, 0, 0},

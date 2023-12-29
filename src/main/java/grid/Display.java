@@ -3,10 +3,15 @@ package grid;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import java.awt.Image;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 
 public class Display {
@@ -15,17 +20,21 @@ public class Display {
     Display() {
     }
 
-    private static ImageIcon createImageIcon(String path) {
-        ClassLoader classLoader = Display.class.getClassLoader();
-        java.net.URL imgURL = classLoader.getResource("/img/" + path);
-    
-        if (imgURL != null) {
-            return new ImageIcon(imgURL);
-        } else {
-            throw new IllegalArgumentException("Couldn't find file: " + path);
+    private static ImageIcon createImageIcon(String filename) throws IOException {
+        String realPath = "src/main/resources/img/" + filename;
+
+        // Load the image file as a FileInputStream
+        try (FileInputStream stream = new FileInputStream(new File(realPath))) {
+            // Convert the FileInputStream to an Image
+            Image image = javax.imageio.ImageIO.read(stream);
+
+            // Create and return the ImageIcon
+            return new ImageIcon(image);
+        } catch (IOException e) {
+            throw new IOException("Couldn't find file: " + realPath, e);
         }
     }
-    
+
 
     JButton[][] displayGrid(int[][] grid, int row, int col) {
 
@@ -35,8 +44,13 @@ public class Display {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
 
-                buttons[i][j] = new JButton(createImageIcon("Sshoe" + grid[i][j] + ".png"));
-                buttons[i][j] = new JButton();
+                try {
+                    buttons[i][j] = new JButton(createImageIcon("shoe"+grid[i][j] +".png"));
+                } catch (IOException e) {
+                    //Change this later
+                    System.err.println("Error loading image:" +e.getMessage());
+                    System.exit(1);
+                }
                 buttons[i][j].setBackground(new Color(200, 100, 100));
                 buttons[i][j].setPreferredSize(new Dimension(128, 128));
                 gridPanel.add(buttons[i][j]);

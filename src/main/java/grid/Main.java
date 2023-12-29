@@ -79,6 +79,7 @@ public class Main {
             Display displayEasy = new Display();
             JPanel ezPanel = new JPanel(new GridLayout(5, 5));
 
+            easyO.setLevel(1);
             int[][] easyArray = easyO.getGrid();
 
 
