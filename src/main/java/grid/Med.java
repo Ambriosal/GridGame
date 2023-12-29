@@ -104,6 +104,4 @@ public class Med {
     void updateMove(){
         moveCounter++;
     }
-
-
 }
