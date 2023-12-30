@@ -16,7 +16,6 @@ import java.io.IOException;
 
 public class Display {
 
-    //make sure to use school checkstyle file
     Display() {
     }
 
