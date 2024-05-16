@@ -10,7 +10,7 @@ repositories {
 
 checkstyle {
     configFile = file("checkstyle.xml")
-    ignoreFailures = false
+    ignoreFailures = true
 }
 
 

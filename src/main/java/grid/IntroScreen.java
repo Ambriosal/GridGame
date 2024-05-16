@@ -1,23 +1,27 @@
 package grid;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class IntroScreen {
+public class IntroScreen extends BaseScreen {
 
+    public IntroScreen() {
+        JLabel text = new JLabel("This is the intro!");
+        JButton button = new JButton("Exit");
 
-    void intro(){
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
 
-        JPanel introPanel = new JPanel();
+        });
 
-        JLabel introTitle = new JLabel("Intro Panel: Welcome to Grid Game");
-
-        JButton next = new JButton("Next!");
-
-        introPanel.add(introTitle);
-        introPanel.add(next);
+        add(text);
+        add(button);
 
     }
-    
+
 }
