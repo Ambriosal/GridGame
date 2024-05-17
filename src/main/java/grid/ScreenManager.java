@@ -12,7 +12,7 @@ public class ScreenManager extends BaseScreen {
         setLayout(cardLayout);
     }
 
-    public void addScreen (String name, BaseScreen screen){
+    public void addScreen(String name, BaseScreen screen){
         add(screen, name);
     }
 

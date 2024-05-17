@@ -1,30 +1,14 @@
 package grid;
 
-public class Easy extends Mode {
-
-    /* FIELDS */
-
-    private int moveCounter = 0;
-    private int level = 0;
-    private int progress = 33;
-
+public class Easy extends Mode implements Grid {
 
     Easy() {
         // default constructor
     }
 
-    // void setLevel(int lvl) {
-    //     level = lvl;
-    // }
+    public int[][] getGrid() { // returns grid for specified levl
 
-    // int getLevel() {
-    //     return level;
-
-    // }
-
-    int[][] getGrid() { // returns grid for specified levl
-
-        if (level == 1) {
+        if (getLevel() == 1) {
             return new int[][]{{0, 0, 0, 1, 4},
                 {0, 0, 3, 4, 0},
                 {1, 0, 0, 0, 0},
@@ -32,7 +16,7 @@ public class Easy extends Mode {
                 {0, 0, 0, 0, 5}
             };
 
-        } else if (level == 2) {
+        } else if (getLevel() == 2) {
             return new int[][]{{0, 2, 1, 4, 0},
                 {0, 0, 0, 5, 0},
                 {0, 0, 5, 0, 0},
@@ -40,7 +24,7 @@ public class Easy extends Mode {
                 {1, 0, 3, 4, 0}
                 };
 
-        } else {
+        } else if (getLevel() == 3){
             return new int[][]{{0, 0, 1, 0, 4},
                 {0, 0, 0, 0, 2},
                 {1, 0, 5, 0, 0},
@@ -48,19 +32,12 @@ public class Easy extends Mode {
                 {0, 0, 0, 0, 2} 
             };
         }
+        else return null;
     }
 
-    // void setProgress(int p) {
-    //     progress = p;
-    // }
+    public int[][] getAnswerGrid() { // returns grid for specified levl
 
-    // int getProgress() {
-    //     return progress;
-    // }
-
-    int[][] getAnswerGrid() { // returns grid for specified levl
-
-        if (level == 1) {
+        if (getLevel() == 1) {
             return new int[][]{{6, 6, 6, 1, 4},
                 {6, 8, 3, 4, 9},
                 {1, 8, 7, 7, 7},
@@ -68,7 +45,7 @@ public class Easy extends Mode {
                 {7, 7, 7, 10, 5}
             };
 
-        } else if (level == 2) {
+        } else if (getLevel() == 2) {
             return new int[][]{{7, 2, 1, 4, 9},
                 {7, 6, 6, 5, 9},
                 {7, 6, 5, 10, 9},
@@ -76,7 +53,7 @@ public class Easy extends Mode {
                 {1, 6, 3, 4, 9}
             };
 
-        } else {
+        } else if(getLevel() == 3) {
             return new int[][]{{6, 6, 1, 9, 4},
                 {6, 10, 10, 9, 2},
                 {1, 10, 5, 9, 7},
@@ -84,18 +61,7 @@ public class Easy extends Mode {
                 {10, 10, 9, 9, 2} 
             };
         }
+        else return null;
     }
-
-    // int getMoveCount() {
-    //     return moveCounter;
-    // }
-
-    // void updateMove(int m) {
-    //     moveCounter = m;
-    // }
-
-    // void updateMove() {
-    //     moveCounter++;
-    // }
 
 }

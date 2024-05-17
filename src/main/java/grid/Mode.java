@@ -2,9 +2,14 @@ package grid;
 
 public abstract class Mode {
 
+    //Fields
     private int level = 0;
     private int moveCounter = 0;
-    private int progress = 33;
+    private int progress = 11;
+
+    Mode(){
+        level = 0;
+    }
 
     void setLevel(int lvl){
         level = lvl;

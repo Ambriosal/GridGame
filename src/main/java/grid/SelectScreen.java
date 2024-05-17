@@ -9,12 +9,14 @@ import javax.swing.JLabel;
 public class SelectScreen extends BaseScreen{
 
     private ScreenManager screenManager;
-    private GridState gridState = new GridState();
+    private GridState gridState;
 
-    public SelectScreen(ScreenManager screenManager){
+    public SelectScreen(ScreenManager screenManager, GridState gridState){
         this.screenManager = screenManager;
 
         JLabel selectText = new JLabel("Please select a game mode below.");
+
+        //Easy button
         JButton easyButton = new JButton("Easy");
         easyButton.addActionListener(new ActionListener() {
             @Override
@@ -23,17 +25,26 @@ public class SelectScreen extends BaseScreen{
             }
         });
 
-
+        //Med button
         JButton medButton = new JButton("Medium");
+        medButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                medSelected();
+            }
+        });
+
+        //Hard button
         JButton hardButton = new JButton("Hard");
+        hardButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                hardSelected();
+            }
+        });
 
-        /* 
-         If easy is clicked...
-         Set the level to 1.
-         Pass the info of Easy to Display.displayGrid
-        */
 
-
+        //Adding components
         add(selectText);
         add(easyButton);
         add(medButton);
@@ -44,11 +55,25 @@ public class SelectScreen extends BaseScreen{
     public void easySelected(){
         gridState.setMode('e');
         gridState.setLevel(1);
+        gridState.setCurrentGrid(gridState.easy.getGrid());
         //go to game screen
-        // screenManager.showScreen("Game");
+        screenManager.showScreen("Game");
+    }
 
+    public void medSelected(){
+        gridState.setMode('m');
+        gridState.setLevel(4);
+        gridState.setCurrentGrid(gridState.med.getGrid());
+        //got to gameScreen
+        screenManager.showScreen("Game");
+    }
 
-
+    public void hardSelected(){
+        gridState.setMode('h');
+        gridState.setLevel(7);
+        gridState.setCurrentGrid(gridState.hard.getGrid());
+        //got to gameScreen
+        screenManager.showScreen("Game");
     }
     
 }

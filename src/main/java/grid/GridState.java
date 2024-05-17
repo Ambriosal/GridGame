@@ -1,68 +1,67 @@
 package grid;
 
-public class GridState extends Mode{
+public class GridState extends Mode {
 
     private char mode = 'e';
-    private Easy easy = new Easy();
-    private Med med = new Med();
-    private Hard hard = new Hard();
+    public Easy easy = new Easy();
+    public Med med = new Med();
+    public Hard hard = new Hard();
     private int[][] currentGrid;
 
+    GridState() {
+    }
 
-    GridState(){}
-
-    void setMode(char m){
+    void setMode(char m) {
         mode = m;
     }
 
-    char getMode(){
+    char getMode() {
         return mode;
     }
 
-    void setCurrentGrid(int[][] current){
+    void setCurrentGrid(int[][] current) {
         currentGrid = current;
     }
 
-    int[][] getCurrentGrid(){
+    int[][] getCurrentGrid() {
         return currentGrid;
     }
 
-    int[][] changeGridMode(char modeSelect){
+    int[][] changeGridMode(char modeSelect) {
 
-        if (modeSelect == 'e'){
+        if (modeSelect == 'e') {
             return easy.getGrid();
-        } else if (modeSelect == 'm'){
+        } else if (modeSelect == 'm') {
             return med.getGrid();
-        }else{
+        } else {
             return hard.getGrid();
         }
     }
 
-    int[][] AnswerGrid(){
-        if (mode == 'e'){
+    int[][] answerGrid() {
+        if (mode == 'e') {
             return easy.getAnswerGrid();
-        } else if (mode == 'm'){
+        } else if (mode == 'm') {
             return med.getAnswerGrid();
-        }else{
+        } else {
             return hard.getAnswerGrid();
         }
     }
 
-    int gridSize(){
+    int gridSize() {
 
         int size = 0;
-        
-        if (mode == 'e'){
+
+        if (mode == 'e') {
             size = 5;
-        } if(mode == 'm'){
+        }
+        if (mode == 'm') {
             size = 6;
-        } if (mode == 'h'){
+        }
+        if (mode == 'h') {
             size = 8;
         }
         return size;
     }
-    
 
-
-    
 }

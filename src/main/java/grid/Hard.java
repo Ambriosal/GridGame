@@ -1,28 +1,15 @@
 package grid;
 
 
-public class Hard extends Mode{
-
-    private int moveCounter = 0;
-    private static int level = 0;
-    private static int progress = 33;
+public class Hard extends Mode implements Grid{
 
     Hard(){ //def constructor
 
     }
 
-    // void setLevel(int lvl){
-    //     level = lvl;
-    // }
+    public int[][] getGrid() { // returns grid for specified levl
 
-    // int getLevel(){
-    //     return level;
-
-    // }    
-
-    int[][] getGrid() { // returns grid for specified levl
-
-        if (level == 1) {
+        if (getLevel() == 7) {
             return new int[][]{{1, 0, 0, 0, 0, 0, 0, 3},
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 11, 0, 5, 0, 0},
@@ -33,7 +20,7 @@ public class Hard extends Mode{
                 {0, 0, 0, 0, 0, 0, 0, 0}
             };
 
-        } else if (level == 2) {
+        } else if (getLevel() == 8) {
             return new int[][]{{0, 0, 0, 2, 0, 3, 4, 5},
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 5, 0},
@@ -44,7 +31,7 @@ public class Hard extends Mode{
                 {0, 0, 0, 0, 0, 0, 0, 3}
             };
 
-        } else {
+        } else if (getLevel() == 9) {
             return new int[][]{{2, 0, 0, 0, 0, 0, 5, 2},
                 {0, 0, 0, 0, 4, 0, 0, 0},
                 {0, 0, 0, 0, 3, 0, 0, 0},
@@ -55,19 +42,12 @@ public class Hard extends Mode{
                 {0, 0, 0, 0, 0, 0, 0, 0} 
             };
         }
+        else return null;
     }
 
-    // void setProgress(int p){
-    //     progress = p;
-    // }
+    public int[][] getAnswerGrid() { // returns grid for specified levl
 
-    // int getProgress(){
-    //     return progress;
-    // }
-
-    int[][] getAnswerGrid() { // returns grid for specified levl
-
-        if (level == 1) {
+        if (getLevel() == 7) {
             return new int[][]{{1, 7, 7, 7, 7, 7, 7, 3},
                 {6, 7, 10, 10, 10, 10, 7, 8},
                 {6, 7, 10, 11, 12, 5, 7, 8},
@@ -78,7 +58,7 @@ public class Hard extends Mode{
                 {12, 12, 12, 12, 12, 12, 12, 12}
             };
 
-        } else if (level == 2) {
+        } else if (getLevel() == 8) {
             return new int[][]{{7, 7, 7, 2, 8, 3, 4, 5},
                 {7, 8, 8, 8, 8, 9, 9, 10},
                 {7, 8, 9, 9, 9, 9, 5, 10},
@@ -89,7 +69,7 @@ public class Hard extends Mode{
                 {7, 7, 7, 7, 7, 7, 8, 3}
             };
 
-        } else {
+        } else if (getLevel() == 9){
             return new int[][]{{2, 7, 7, 7, 7, 7, 5, 2},
                 {9, 9, 9, 9, 4, 7, 10, 7},
                 {9, 8, 8, 8, 3, 7, 10, 7},
@@ -100,18 +80,7 @@ public class Hard extends Mode{
                 {9, 9, 9, 9, 9, 7, 7, 7} 
             };
         }
+        else return null;
     }
 
-
-    // int getMoveCount(){
-    //     return moveCounter;
-    // }
-
-    // void updateMove(int m){
-    //     moveCounter = m;
-    // }
-
-    // void updateMove(){
-    //     moveCounter++;
-    // }
 }

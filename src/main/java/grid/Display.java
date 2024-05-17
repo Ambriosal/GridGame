@@ -35,9 +35,9 @@ public class Display extends BaseScreen{
     }
 
 
-    JButton[][] displayGrid(int[][] grid, int row, int col) {
+    JPanel displayGrid(int[][] grid, int row, int col, JButton[][] buttons) {
 
-        JButton[][] buttons = new JButton[row][col];
+        buttons = new JButton[row][col];
         JPanel gridPanel = new JPanel(new GridLayout(row, col));
 
         for (int i = 0; i < row; i++) {
@@ -55,7 +55,7 @@ public class Display extends BaseScreen{
                 gridPanel.add(buttons[i][j]);
             }
         }
-        return buttons;
+        return gridPanel;
     }
 
 }

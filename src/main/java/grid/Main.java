@@ -9,13 +9,19 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 600);
 
+
+        //testing
+        GridState gridState = new GridState();
         // Screens & adding screens
         ScreenManager screenManager = new ScreenManager();
         Display display = new Display();
         HomeScreen homeScreen = new HomeScreen(screenManager);
         IntroScreen introScreen = new IntroScreen(screenManager);
-        SelectScreen selectScreen = new SelectScreen(screenManager);
-        GameScreen gameScreen = new GameScreen(screenManager);
+        SelectScreen selectScreen = new SelectScreen(screenManager, gridState);
+        GameScreen gameScreen = new GameScreen(screenManager, gridState);
+        
+
+
 
 
         screenManager.addScreen("Home", homeScreen);

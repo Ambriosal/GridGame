@@ -10,7 +10,7 @@ public class IntroScreen extends BaseScreen {
     private ScreenManager screenManager;
 
     public IntroScreen(ScreenManager screenManager) {
-        this. screenManager = screenManager;
+        this.screenManager = screenManager;
         JLabel text = new JLabel("This is the intro!");
         JButton display = new JButton("Next!");
 
