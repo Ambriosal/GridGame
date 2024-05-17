@@ -1,6 +1,6 @@
 package grid;
 
-public class GridState {
+public class GridState extends Mode{
 
     private char mode = 'e';
     private Easy easy = new Easy();

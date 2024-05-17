@@ -14,7 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 
-public class Display {
+public class Display extends BaseScreen{
 
     Display() {
     }

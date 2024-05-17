@@ -13,8 +13,8 @@ public class HomeScreen extends BaseScreen {
         this.screenManager = screenManager;
 
         JLabel text = new JLabel("Home Screen!");
-        JButton hB = new JButton("Go to intro");
-        hB.addActionListener(new ActionListener() {
+        JButton playButton = new JButton("Play!");
+        playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 screenManager.showScreen("Intro");
@@ -22,8 +22,16 @@ public class HomeScreen extends BaseScreen {
 
         });
 
+        // JButton setButton = new JButton("Settings");
+        // setButton.addActionListener(new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e){
+        //         screenManager.showScreen("Settings");
+        //     }
+        // });
+
         add(text);
-        add(hB);
+        add(playButton);
 
     }
 

@@ -7,20 +7,23 @@ import java.awt.event.ActionListener;
 
 public class IntroScreen extends BaseScreen {
 
-    public IntroScreen() {
-        JLabel text = new JLabel("This is the intro!");
-        JButton button = new JButton("Exit");
+    private ScreenManager screenManager;
 
-        button.addActionListener(new ActionListener() {
+    public IntroScreen(ScreenManager screenManager) {
+        this. screenManager = screenManager;
+        JLabel text = new JLabel("This is the intro!");
+        JButton display = new JButton("Next!");
+
+        display.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                screenManager.showScreen("ModeSelect");
             }
 
         });
 
         add(text);
-        add(button);
+        add(display);
 
     }
 

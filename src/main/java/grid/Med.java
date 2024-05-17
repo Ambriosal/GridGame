@@ -2,7 +2,7 @@ package grid;
 
 
 
-public class Med {
+public class Med extends Mode{
 
     /* FIELDS */
     
@@ -13,14 +13,14 @@ public class Med {
     Med(){
     }
 
-    void setLevel(int lvl){
-        level = lvl;
-    }
+    // void setLevel(int lvl){
+    //     level = lvl;
+    // }
     
-    int getLevel(){
-        return level;
+    // int getLevel(){
+    //     return level;
 
-    }
+    // }
 
     int[][] getGrid(){
 
@@ -53,13 +53,13 @@ public class Med {
         }
     }
 
-    void setProgress(int p){
-        progress = p;
-    }
+    // void setProgress(int p){
+    //     progress = p;
+    // }
 
-    int getProgress(){
-        return progress;
-    }
+    // int getProgress(){
+    //     return progress;
+    // }
 
 
     int[][] getAnswerGrid() { // returns grid for specified levl
@@ -93,15 +93,15 @@ public class Med {
         }
     }
 
-    int getMoveCount(){
-        return moveCounter;
-    }
+    // int getMoveCount(){
+    //     return moveCounter;
+    // }
 
-    void updateMove(int m){
-        moveCounter = m;
-    }
+    // void updateMove(int m){
+    //     moveCounter = m;
+    // }
 
-    void updateMove(){
-        moveCounter++;
-    }
+    // void updateMove(){
+    //     moveCounter++;
+    // }
 }

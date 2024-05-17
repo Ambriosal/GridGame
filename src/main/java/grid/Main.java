@@ -11,11 +11,18 @@ public class Main {
 
         // Screens & adding screens
         ScreenManager screenManager = new ScreenManager();
+        Display display = new Display();
         HomeScreen homeScreen = new HomeScreen(screenManager);
-        IntroScreen introScreen = new IntroScreen();
+        IntroScreen introScreen = new IntroScreen(screenManager);
+        SelectScreen selectScreen = new SelectScreen(screenManager);
+        GameScreen gameScreen = new GameScreen(screenManager);
+
 
         screenManager.addScreen("Home", homeScreen);
         screenManager.addScreen("Intro", introScreen);
+        screenManager.addScreen("ModeSelect",selectScreen);
+        screenManager.addScreen("Display", display);
+        screenManager.addScreen("Game", gameScreen);
 
         frame.add(screenManager);
         frame.setVisible(true);

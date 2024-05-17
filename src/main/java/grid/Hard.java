@@ -1,7 +1,7 @@
 package grid;
 
 
-public class Hard {
+public class Hard extends Mode{
 
     private int moveCounter = 0;
     private static int level = 0;
@@ -11,14 +11,14 @@ public class Hard {
 
     }
 
-    void setLevel(int lvl){
-        level = lvl;
-    }
+    // void setLevel(int lvl){
+    //     level = lvl;
+    // }
 
-    int getLevel(){
-        return level;
+    // int getLevel(){
+    //     return level;
 
-    }    
+    // }    
 
     int[][] getGrid() { // returns grid for specified levl
 
@@ -57,13 +57,13 @@ public class Hard {
         }
     }
 
-    void setProgress(int p){
-        progress = p;
-    }
+    // void setProgress(int p){
+    //     progress = p;
+    // }
 
-    int getProgress(){
-        return progress;
-    }
+    // int getProgress(){
+    //     return progress;
+    // }
 
     int[][] getAnswerGrid() { // returns grid for specified levl
 
@@ -103,15 +103,15 @@ public class Hard {
     }
 
 
-    int getMoveCount(){
-        return moveCounter;
-    }
+    // int getMoveCount(){
+    //     return moveCounter;
+    // }
 
-    void updateMove(int m){
-        moveCounter = m;
-    }
+    // void updateMove(int m){
+    //     moveCounter = m;
+    // }
 
-    void updateMove(){
-        moveCounter++;
-    }
+    // void updateMove(){
+    //     moveCounter++;
+    // }
 }
