@@ -9,10 +9,12 @@ public class GridState extends Mode {
     private int[][] currentGrid;
 
     GridState() {
+        initGrid();
     }
 
     void setMode(char m) {
         mode = m;
+        initGrid();
     }
 
     char getMode() {
@@ -63,5 +65,15 @@ public class GridState extends Mode {
         }
         return size;
     }
+
+
+    //Init grid
+
+    private void initGrid(){
+        int size = gridSize();
+        currentGrid = new int[size][size];
+
+    }
+
 
 }

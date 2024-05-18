@@ -15,14 +15,17 @@ public class GameScreen extends BaseScreen {
         this.screenManager = screenManager;
         this.gridState = gridState;
         this.display = new Display();
-        // this.easy = new Easy();
 
         JLabel titleText = new JLabel("This is the game screen.");
 
-
-
         int[][] gridArray;
         gridArray = gridState.getCurrentGrid();
+        int l = gridState.getLevel();
+        char m = gridState.getMode();
+        //Check if grid is null
+        if (gridArray == null) {
+            throw new IllegalStateException("GridState returned a null grid. " + l + m);
+        }
 
         int size = gridState.gridSize();
 
@@ -33,8 +36,4 @@ public class GameScreen extends BaseScreen {
         add(titleText);
         add(gridPanel);
     }
-
-
-
-    
 }

@@ -11,14 +11,15 @@ public class Main {
 
 
         //testing
-        GridState gridState = new GridState();
+        // GridState gridState = new GridState();
         // Screens & adding screens
         ScreenManager screenManager = new ScreenManager();
-        Display display = new Display();
         HomeScreen homeScreen = new HomeScreen(screenManager);
         IntroScreen introScreen = new IntroScreen(screenManager);
-        SelectScreen selectScreen = new SelectScreen(screenManager, gridState);
-        GameScreen gameScreen = new GameScreen(screenManager, gridState);
+        SelectScreen selectScreen = new SelectScreen(screenManager);
+        // GameScreen gameScreen = new GameScreen(screenManager, gridState);
+        Display display = new Display();
+
         
 
 
@@ -28,7 +29,7 @@ public class Main {
         screenManager.addScreen("Intro", introScreen);
         screenManager.addScreen("ModeSelect",selectScreen);
         screenManager.addScreen("Display", display);
-        screenManager.addScreen("Game", gameScreen);
+        // screenManager.addScreen("Game", gameScreen);
 
         frame.add(screenManager);
         frame.setVisible(true);

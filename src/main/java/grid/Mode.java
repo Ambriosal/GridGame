@@ -6,6 +6,8 @@ public abstract class Mode {
     private int level = 0;
     private int moveCounter = 0;
     private int progress = 11;
+    private int[][] currentGrid;
+    private int size;
 
     Mode(){
         level = 0;
@@ -17,6 +19,14 @@ public abstract class Mode {
 
     int getLevel(){
         return level;
+    }
+
+    void setSize(int s){
+        size = s;
+    }
+
+    int getSize(){
+        return size;
     }
     
     void setProgress(int p){
@@ -37,6 +47,10 @@ public abstract class Mode {
 
     void updateMove(){
         moveCounter++;
+    }
+
+    void initGrid(){
+        currentGrid = new int[size][size];
     }
 
 }

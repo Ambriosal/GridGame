@@ -9,9 +9,9 @@ import javax.swing.JLabel;
 public class SelectScreen extends BaseScreen{
 
     private ScreenManager screenManager;
-    private GridState gridState;
+    private GridState gridState = new GridState();
 
-    public SelectScreen(ScreenManager screenManager, GridState gridState){
+    public SelectScreen(ScreenManager screenManager){
         this.screenManager = screenManager;
 
         JLabel selectText = new JLabel("Please select a game mode below.");
@@ -57,7 +57,8 @@ public class SelectScreen extends BaseScreen{
         gridState.setLevel(1);
         gridState.setCurrentGrid(gridState.easy.getGrid());
         //go to game screen
-        screenManager.showScreen("Game");
+        createAndShowGameScreen();
+
     }
 
     public void medSelected(){
@@ -65,7 +66,8 @@ public class SelectScreen extends BaseScreen{
         gridState.setLevel(4);
         gridState.setCurrentGrid(gridState.med.getGrid());
         //got to gameScreen
-        screenManager.showScreen("Game");
+        createAndShowGameScreen();
+
     }
 
     public void hardSelected(){
@@ -73,6 +75,13 @@ public class SelectScreen extends BaseScreen{
         gridState.setLevel(7);
         gridState.setCurrentGrid(gridState.hard.getGrid());
         //got to gameScreen
+        createAndShowGameScreen();
+
+    }
+
+    private void createAndShowGameScreen(){
+        GameScreen gameScreen = new GameScreen(screenManager, gridState);
+        screenManager.addScreen("Game", gameScreen);
         screenManager.showScreen("Game");
     }
     
