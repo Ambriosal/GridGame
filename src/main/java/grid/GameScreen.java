@@ -19,7 +19,7 @@ public class GameScreen extends BaseScreen {
         JLabel titleText = new JLabel("This is the game screen.");
 
         int[][] gridArray;
-        gridArray = gridState.getCurrentGrid();
+        gridArray = GridState.getCurrentGrid();
         int l = gridState.getLevel();
         char m = gridState.getMode();
         //Check if grid is null
@@ -31,7 +31,6 @@ public class GameScreen extends BaseScreen {
 
         JButton[][] gridButtons = new JButton[size][size];
         JPanel gridPanel = display.displayGrid(gridArray, size, size, gridButtons);
-
 
         add(titleText);
         add(gridPanel);

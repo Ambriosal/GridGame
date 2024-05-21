@@ -43,7 +43,6 @@ public class SelectScreen extends BaseScreen{
             }
         });
 
-
         //Adding components
         add(selectText);
         add(easyButton);
@@ -55,7 +54,7 @@ public class SelectScreen extends BaseScreen{
     public void easySelected(){
         gridState.setMode('e');
         gridState.setLevel(1);
-        gridState.setCurrentGrid(gridState.easy.getGrid());
+        GridState.setCurrentGrid(GridState.easy.getGrid());
         //go to game screen
         createAndShowGameScreen();
 
@@ -64,7 +63,7 @@ public class SelectScreen extends BaseScreen{
     public void medSelected(){
         gridState.setMode('m');
         gridState.setLevel(4);
-        gridState.setCurrentGrid(gridState.med.getGrid());
+        GridState.setCurrentGrid(GridState.med.getGrid());
         //got to gameScreen
         createAndShowGameScreen();
 
@@ -73,7 +72,7 @@ public class SelectScreen extends BaseScreen{
     public void hardSelected(){
         gridState.setMode('h');
         gridState.setLevel(7);
-        gridState.setCurrentGrid(gridState.hard.getGrid());
+        GridState.setCurrentGrid(GridState.hard.getGrid());
         //got to gameScreen
         createAndShowGameScreen();
 
@@ -84,5 +83,5 @@ public class SelectScreen extends BaseScreen{
         screenManager.addScreen("Game", gameScreen);
         screenManager.showScreen("Game");
     }
-    
+
 }

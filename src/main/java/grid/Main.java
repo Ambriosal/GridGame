@@ -20,11 +20,7 @@ public class Main {
         // GameScreen gameScreen = new GameScreen(screenManager, gridState);
         Display display = new Display();
 
-        
-
-
-
-
+    
         screenManager.addScreen("Home", homeScreen);
         screenManager.addScreen("Intro", introScreen);
         screenManager.addScreen("ModeSelect",selectScreen);

@@ -3,10 +3,10 @@ package grid;
 public class GridState extends Mode {
 
     private char mode = 'e';
-    public Easy easy = new Easy();
-    public Med med = new Med();
-    public Hard hard = new Hard();
-    private int[][] currentGrid;
+    public static Easy easy = new Easy();
+    public static Med med = new Med();
+    public static Hard hard = new Hard();
+    private static int[][] currentGrid;
 
     GridState() {
         initGrid();
@@ -21,11 +21,11 @@ public class GridState extends Mode {
         return mode;
     }
 
-    void setCurrentGrid(int[][] current) {
+    static void setCurrentGrid(int[][] current) {
         currentGrid = current;
     }
 
-    int[][] getCurrentGrid() {
+    static int[][] getCurrentGrid() {
         return currentGrid;
     }
 
@@ -69,11 +69,9 @@ public class GridState extends Mode {
 
     //Init grid
 
-    private void initGrid(){
+    void initGrid(){
         int size = gridSize();
         currentGrid = new int[size][size];
-
     }
-
 
 }

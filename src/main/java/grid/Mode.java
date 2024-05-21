@@ -3,9 +3,9 @@ package grid;
 public abstract class Mode {
 
     //Fields
-    private int level = 0;
+    private static int level = 0;
     private int moveCounter = 0;
-    private int progress = 11;
+    private static int progress = 11;
     private int[][] currentGrid;
     private int size;
 
