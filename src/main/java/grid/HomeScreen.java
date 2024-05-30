@@ -7,10 +7,10 @@ import java.awt.event.ActionListener;
 
 public class HomeScreen extends BaseScreen {
 
-    private ScreenManager screenManager;
+    private ScreenManager screenM;
 
     public HomeScreen(ScreenManager screenManager) {
-        this.screenManager = screenManager;
+        screenM = screenManager;
 
         JLabel text = new JLabel("Home Screen!");
         JButton playButton = new JButton("Play!");

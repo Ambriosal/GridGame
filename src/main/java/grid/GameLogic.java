@@ -54,7 +54,7 @@ public class GameLogic {
     
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (state.getCurrentGrid()[i][j] != state.answerGrid()[i][j]) {
+                if (GridState.getCurrentGrid()[i][j] != GridState.answerGrid()[i][j]) {
                     System.out.println("Cell not completed.");
                     done = false;
                     return done;
@@ -97,7 +97,7 @@ public class GameLogic {
 
         int x = n / col;
         int y = n % col;
-        int[][] grid = state.getCurrentGrid();
+        int[][] grid = GridState.getCurrentGrid();
 
         //if grid clicked
         if(grid[x][y] == 1){

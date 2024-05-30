@@ -6,14 +6,15 @@ import javax.swing.JPanel;
 
 public class GameScreen extends BaseScreen {
 
-    private ScreenManager screenManager;
-    private GridState gridState;
+    private ScreenManager screenM;
+    private GridState gridS;
+    private GameLogic game;
     private Display display;
     // private Easy easy;
 
     public GameScreen(ScreenManager screenManager, GridState gridState){
-        this.screenManager = screenManager;
-        this.gridState = gridState;
+        screenM = screenManager;
+        gridS = gridState;
         this.display = new Display();
 
         JLabel titleText = new JLabel("This is the game screen.");
@@ -31,6 +32,10 @@ public class GameScreen extends BaseScreen {
 
         JButton[][] gridButtons = new JButton[size][size];
         JPanel gridPanel = display.displayGrid(gridArray, size, size, gridButtons);
+
+        // game.move();
+
+
 
         add(titleText);
         add(gridPanel);

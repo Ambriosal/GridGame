@@ -31,8 +31,9 @@ public class Easy extends Mode implements Grid {
                 {5, 0, 4, 0, 0},
                 {0, 0, 0, 0, 2} 
             };
+        } else {
+            return null;
         }
-        else return null;
     }
 
     public int[][] getAnswerGrid() { // returns grid for specified levl
@@ -60,8 +61,9 @@ public class Easy extends Mode implements Grid {
                 {5, 10, 4, 9, 7},
                 {10, 10, 9, 9, 2} 
             };
+        } else {
+            return null;
         }
-        else return null;
     }
 
 }

@@ -34,8 +34,9 @@ public class Med extends Mode implements Grid{
                 {0, 1, 0, 2, 0, 0},
                 {0, 0, 0, 5, 0, 0}
             };
+        } else {
+            return null;
         }
-        else return null;
     }
 
     public int[][] getAnswerGrid() { // returns grid for specified levl
@@ -66,8 +67,9 @@ public class Med extends Mode implements Grid{
                 {8, 1, 8, 2, 7, 10},
                 {8, 8, 8, 5, 10, 10}
             };
+        } else {
+            return null;
         }
-        else return null;
     }
 
 }

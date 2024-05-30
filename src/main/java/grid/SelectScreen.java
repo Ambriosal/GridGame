@@ -50,7 +50,6 @@ public class SelectScreen extends BaseScreen{
         add(hardButton);
     }
 
-
     public void easySelected(){
         gridState.setMode('e');
         gridState.setLevel(1);
@@ -64,7 +63,7 @@ public class SelectScreen extends BaseScreen{
         gridState.setMode('m');
         gridState.setLevel(4);
         GridState.setCurrentGrid(GridState.med.getGrid());
-        //got to gameScreen
+        //go to gameScreen
         createAndShowGameScreen();
 
     }
@@ -73,7 +72,7 @@ public class SelectScreen extends BaseScreen{
         gridState.setMode('h');
         gridState.setLevel(7);
         GridState.setCurrentGrid(GridState.hard.getGrid());
-        //got to gameScreen
+        //go to gameScreen
         createAndShowGameScreen();
 
     }

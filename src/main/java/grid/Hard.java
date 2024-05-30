@@ -41,8 +41,9 @@ public class Hard extends Mode implements Grid{
                 {0, 0, 3, 1, 0, 0, 5, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0} 
             };
+        } else {
+            return null;
         }
-        else return null;
     }
 
     public int[][] getAnswerGrid() { // returns grid for specified levl
@@ -79,8 +80,9 @@ public class Hard extends Mode implements Grid{
                 {9, 8, 3, 1, 9, 7, 5, 7},
                 {9, 9, 9, 9, 9, 7, 7, 7} 
             };
+        } else {
+            return null;
         }
-        else return null;
     }
 
 }

@@ -2,11 +2,11 @@ package grid;
 
 public class GridState extends Mode {
 
-    private char mode = 'e';
-    public static Easy easy = new Easy();
-    public static Med med = new Med();
-    public static Hard hard = new Hard();
-    private static int[][] currentGrid;
+    static char mode = 'e';
+    static Easy easy = new Easy();
+    static Med med = new Med();
+    static Hard hard = new Hard();
+    static int[][] currentGrid;
 
     GridState() {
         initGrid();
@@ -40,7 +40,7 @@ public class GridState extends Mode {
         }
     }
 
-    int[][] answerGrid() {
+    static int[][] answerGrid() {
         if (mode == 'e') {
             return easy.getAnswerGrid();
         } else if (mode == 'm') {
@@ -65,7 +65,6 @@ public class GridState extends Mode {
         }
         return size;
     }
-
 
     //Init grid
 
