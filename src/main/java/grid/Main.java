@@ -18,13 +18,13 @@ public class Main {
         IntroScreen introScreen = new IntroScreen(screenManager);
         SelectScreen selectScreen = new SelectScreen(screenManager);
         // GameScreen gameScreen = new GameScreen(screenManager, gridState);
-        Display display = new Display();
+        // Display display = new Display();
 
     
         screenManager.addScreen("Home", homeScreen);
         screenManager.addScreen("Intro", introScreen);
         screenManager.addScreen("ModeSelect",selectScreen);
-        screenManager.addScreen("Display", display);
+        // screenManager.addScreen("Display", display);
         // screenManager.addScreen("Game", gameScreen);
 
         frame.add(screenManager);

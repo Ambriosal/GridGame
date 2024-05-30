@@ -4,7 +4,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Image;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -16,10 +17,13 @@ import java.io.IOException;
 
 public class Display extends BaseScreen{
 
-    Display() {
+    private GameLogic gameLogic;
+
+    Display(GameLogic gameLogic) {
+        this.gameLogic = gameLogic;
     }
 
-    private static ImageIcon createImageIcon(String filename) throws IOException {
+    static ImageIcon createImageIcon(String filename) throws IOException {
         String realPath = "src/main/resources/img/" + filename;
 
         // Load the image file as a FileInputStream
@@ -52,6 +56,16 @@ public class Display extends BaseScreen{
                 }
                 buttons[i][j].setBackground(new Color(200, 100, 100));
                 buttons[i][j].setPreferredSize(new Dimension(128, 128));
+                //Adding Action listeners to each button
+                int x = i;
+                int y = j;
+                buttons[i][j].addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e){
+                        // gameLogic.move(grid, x,y, buttons); this is broken
+                    }
+                });
+                
                 gridPanel.add(buttons[i][j]);
             }
         }

@@ -15,7 +15,8 @@ public class GameScreen extends BaseScreen {
     public GameScreen(ScreenManager screenManager, GridState gridState){
         screenM = screenManager;
         gridS = gridState;
-        this.display = new Display();
+        this.display = new Display(game);
+        this.game = new GameLogic();
 
         JLabel titleText = new JLabel("This is the game screen.");
 
@@ -33,7 +34,7 @@ public class GameScreen extends BaseScreen {
         JButton[][] gridButtons = new JButton[size][size];
         JPanel gridPanel = display.displayGrid(gridArray, size, size, gridButtons);
 
-        // game.move();
+        // game.move(gridState);
 
 
 
