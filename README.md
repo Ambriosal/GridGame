@@ -18,7 +18,7 @@ Every project is different, so consider which of these sections apply to yours. 
 Choose a self-explaining name for your project.
 
 ## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+A Free-Flow inspired Java application. A few years ago, I created this project using (the now-deprecated API) Applet, with no understanding of the power of OOP (It was one big file of 1000+ lines). Now with the knowledege that I have today, I wanted to challenge myself by refactoring, optimizing, and adding more features to it.
 
 ## Badges
 On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
