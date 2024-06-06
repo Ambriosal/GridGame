@@ -12,7 +12,7 @@ public class GameScreen extends BaseScreen {
     private GridState gridS;
     private GameLogic game;
     private Display display;
-    // private JPanel gridPanel;
+    private JPanel gridPanel;
 
     public GameScreen(ScreenManager screenManager, GridState gridState){
         screenM = screenManager;
@@ -35,7 +35,7 @@ public class GameScreen extends BaseScreen {
 
         int size = gridState.gridSize();
 
-        JPanel gridPanel = display.displayGrid(gridArray, size, size);
+        gridPanel = display.displayGrid(gridArray, size, size);
 
 
         //Reset button
@@ -43,9 +43,11 @@ public class GameScreen extends BaseScreen {
         reset.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                JPanel pee = display.displayGrid(initGrid,size,size);
-                // remove(gridPanel);
-                add(pee);
+                remove(gridPanel);
+                gridPanel = display.displayGrid(initGrid, size, size);
+                add(gridPanel);
+                revalidate();
+                repaint();
 
             }
         });
