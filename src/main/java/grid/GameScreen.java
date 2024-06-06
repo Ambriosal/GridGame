@@ -3,6 +3,8 @@ package grid;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,8 +25,8 @@ public class GameScreen extends BaseScreen {
         JLabel titleText = new JLabel("This is the game screen.");
 
         int[][] gridArray;
-        int[][] initGrid;
-        initGrid = GridState.getCurrentGrid();
+        int[][] resetGrid;
+        resetGrid = GridState.getCurrentGrid();
         gridArray = GridState.getCurrentGrid();
         int l = gridState.getLevel();
         char m = gridState.getMode();
@@ -43,9 +45,10 @@ public class GameScreen extends BaseScreen {
         reset.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                remove(gridPanel);
-                gridPanel = display.displayGrid(initGrid, size, size);
+                remove(gridPanel); //Removes old grid
+                gridPanel = display.displayGrid(resetGrid, size, size);
                 add(gridPanel);
+                //Revalidate and repaint container
                 revalidate();
                 repaint();
 
@@ -61,9 +64,17 @@ public class GameScreen extends BaseScreen {
             }
         });
 
+        //Move Counter
+        JLabel moveCount = new JLabel();
+
         add(reset);
         add(back);
         add(titleText);
         add(gridPanel);
     }
+
+
+    // private void moveCountUpdate (int num){
+        
+    // }
 }

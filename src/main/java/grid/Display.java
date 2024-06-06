@@ -19,6 +19,7 @@ public class Display extends BaseScreen{
 
     private GameLogic gameLogic;
     private JButton[][] buttons;
+    // private int moveCount;
 
     Display(GameLogic gameLogic) {
         this.gameLogic = gameLogic;
@@ -67,12 +68,15 @@ public class Display extends BaseScreen{
                     @Override
                     public void actionPerformed(ActionEvent e){
                         gameLogic.move(grid, x, y, buttons);
+                        // moveCount++;
+
                     }
                 });
                 
                 gridPanel.add(buttons[i][j]);
             }
         }
+
         return gridPanel;
     }
 

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 
 public class SelectScreen extends BaseScreen{
 
@@ -43,11 +44,26 @@ public class SelectScreen extends BaseScreen{
             }
         });
 
+        //Progress
+        JProgressBar progress = new JProgressBar(0,0,100);
+        progressUpdate(progress);
+
+        
+        //Back button
+        JButton back = new JButton("Back");
+        back.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e){
+                screenManager.showScreen("Intro");
+            }
+        });
+
         //Adding components
         add(selectText);
         add(easyButton);
         add(medButton);
         add(hardButton);
+        add(back);
     }
 
     public void easySelected(){
@@ -81,6 +97,13 @@ public class SelectScreen extends BaseScreen{
         GameScreen gameScreen = new GameScreen(screenManager, gridState);
         screenManager.addScreen("Game", gameScreen);
         screenManager.showScreen("Game");
+    }
+
+    
+    private void progressUpdate(JProgressBar progress){
+        progress.setValue(11);
+        progress.setStringPainted (true);
+
     }
 
 }
