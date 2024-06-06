@@ -7,7 +7,8 @@ public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame("CardLayout");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 600);
+        // frame.setSize(400, 600);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 
         //testing

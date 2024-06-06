@@ -18,9 +18,13 @@ import java.io.IOException;
 public class Display extends BaseScreen{
 
     private GameLogic gameLogic;
+    private JButton[][] buttons;
 
     Display(GameLogic gameLogic) {
         this.gameLogic = gameLogic;
+        if(gameLogic == null){
+            throw new IllegalArgumentException("Game logic null!! fix this hoe!!");
+        }
     }
 
     static ImageIcon createImageIcon(String filename) throws IOException {
@@ -39,7 +43,7 @@ public class Display extends BaseScreen{
     }
 
 
-    JPanel displayGrid(int[][] grid, int row, int col, JButton[][] buttons) {
+    JPanel displayGrid(int[][] grid, int row, int col) {
 
         buttons = new JButton[row][col];
         JPanel gridPanel = new JPanel(new GridLayout(row, col));
@@ -59,10 +63,10 @@ public class Display extends BaseScreen{
                 //Adding Action listeners to each button
                 int x = i;
                 int y = j;
-                buttons[i][j].addActionListener(new ActionListener() {
+                buttons[i][j].addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e){
-                        // gameLogic.move(grid, x,y, buttons); this is broken
+                        gameLogic.move(grid, x, y, buttons);
                     }
                 });
                 
