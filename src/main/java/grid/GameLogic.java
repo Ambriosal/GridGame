@@ -93,37 +93,31 @@ public class GameLogic {
 
     void move(int[][] grid, int x, int y, JButton[][] buttons) {
 
-        // int n = 0;
-        // int col = state.gridSize();
-        int cur = 7;
-
-        // int x = n / col;
-        // int y = n % col;
-        // int[][] grid = GridState.getCurrentGrid();
-        // System.out.println("Move method reached.");
-
+        int cur = 0;
         // if grid clicked
         if (grid[x][y] == 1) {
             // changes to this image
             cur = 6;
-            // System.out.println("Move.button reached.");
+
         } else if (grid[x][y] == 2) {
             cur = 7;
+            // if the grid is NOT (1-4), change to 7
         } else if (grid[x][y] == 3) {
             cur = 8;
-        } else if (grid[x][y] == 5) {
+        } else if (grid[x][y] == 4) {
             cur = 9;
-        } else if (grid[x][y] == 6) {
+        } else if (grid[x][y] == 5) {
             cur = 10;
-        } else if (grid[x][y] == 11) {
+        } else if (grid[x][y] == 6) {
+            cur = 11;
+        } else if (grid[x][y] == 7) {
             cur = 12;
         } else {
-            cur = 7;
+            grid[x][y] = cur;
         }
-        grid[x][y] = cur;
-        try{
-            buttons[x][y].setIcon(Display.createImageIcon("shoe"+cur+".png"));
-        } catch(IOException e){
+        try {
+            buttons[x][y].setIcon(Display.createImageIcon("shoe" + cur + ".png"));
+        } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Shit aint working");
         }
