@@ -63,7 +63,7 @@ public class GameLogic {
                 }
             }
         }
-        // done is truie
+        // done is true
         return done;
     }
 
@@ -119,7 +119,7 @@ public class GameLogic {
             buttons[x][y].setIcon(Display.createImageIcon("shoe" + cur + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Shit aint working");
+            System.out.println("Shit aint working.");
         }
     }
 

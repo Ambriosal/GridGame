@@ -48,7 +48,7 @@ public class SelectScreen extends BaseScreen{
         JProgressBar progress = new JProgressBar(0,0,100);
         progressUpdate(progress);
 
-        
+
         //Back button
         JButton back = new JButton("Back");
         back.addActionListener(new ActionListener() {
@@ -63,6 +63,7 @@ public class SelectScreen extends BaseScreen{
         add(easyButton);
         add(medButton);
         add(hardButton);
+        add(progress);
         add(back);
     }
 
@@ -90,7 +91,6 @@ public class SelectScreen extends BaseScreen{
         GridState.setCurrentGrid(GridState.hard.getGrid());
         //go to gameScreen
         createAndShowGameScreen();
-
     }
 
     private void createAndShowGameScreen(){
@@ -101,9 +101,9 @@ public class SelectScreen extends BaseScreen{
 
     
     private void progressUpdate(JProgressBar progress){
-        progress.setValue(11);
-        progress.setStringPainted (true);
-
+        gridState.setProgress(11);
+        progress.setValue(gridState.getProgress());
+        progress.setStringPainted(true);
     }
 
 }
