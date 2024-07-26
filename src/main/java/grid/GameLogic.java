@@ -1,8 +1,8 @@
 package grid;
 
 import java.io.IOException;
-
 import javax.swing.JButton;
+import java.util.HashMap;
 
 public class GameLogic {
 
@@ -13,6 +13,23 @@ public class GameLogic {
     private int easyWins = 0;
     private int medWins = 0;
     private int hardWins = 0;
+    private int colour = -1;
+
+    // hash map
+    private HashMap<Integer, Integer> shoeColour = new HashMap<>();
+
+    HashMap<Integer, Integer> setShoe() {
+
+        shoeColour.put(1, 6);
+        shoeColour.put(2, 7);
+        shoeColour.put(3, 8);
+        shoeColour.put(4, 9);
+        shoeColour.put(5, 10);
+        shoeColour.put(11, 12);
+
+        return shoeColour;
+    }
+    
 
     public GameLogic() {
         // Default constructor
@@ -93,34 +110,39 @@ public class GameLogic {
 
     void move(int[][] grid, int x, int y, JButton[][] buttons) {
 
-        int cur = 0;
-        // if grid clicked
-        if (grid[x][y] == 1) {
-            // changes to this image
-            cur = 6;
+        // int colour = -1;
+        setShoe();
 
-        } else if (grid[x][y] == 2) {
-            cur = 7;
-            // if the grid is NOT (1-4), change to 7
-        } else if (grid[x][y] == 3) {
-            cur = 8;
-        } else if (grid[x][y] == 4) {
-            cur = 9;
-        } else if (grid[x][y] == 5) {
-            cur = 10;
-        } else if (grid[x][y] == 6) {
-            cur = 11;
-        } else if (grid[x][y] == 7) {
-            cur = 12;
+        if (colour == -1) {
+            System.err.println("Colour was -ve");
+            if (grid[x][y] != 0) {
+                colour = shoeColour.get(grid[x][y]);
+            }
+
         } else {
-            grid[x][y] = cur;
+
+            //IF SHOE IS CLICKED
+            if((grid[x][y] >= 1 && grid[x][y] <=5) || grid[x][y] == 11){
+                //acquire colour
+                colour = shoeColour.get(grid[x][y]);
+            }
+            // IF A MUTUABLE TILE IS CLICKED
+            else if (grid[x][y] == 0 || (grid[x][y] >= 6 && grid[x][y] <= 10) || grid[x][y] == 12 ) {
+  
+                try {
+                    //UPDATE TILE COLOUR
+                    buttons[x][y].setIcon(Display.createImageIcon("shoe" + colour + ".png"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("Shit ain't working.");
+                }
+            }
+
         }
-        try {
-            buttons[x][y].setIcon(Display.createImageIcon("shoe" + cur + ".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Shit aint working.");
-        }
+    }
+
+    void resetColour() {
+        colour = -1;
     }
 
 }

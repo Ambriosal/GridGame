@@ -53,7 +53,7 @@ public class Display extends BaseScreen{
             for (int j = 0; j < col; j++) {
 
                 try {
-                    buttons[i][j] = new JButton(createImageIcon("shoe"+grid[i][j] +".png"));
+                    buttons[i][j] = new JButton(createImageIcon("shoe"+grid[i][j]+".png"));
                 } catch (IOException e) {
                     //Change this later
                     System.err.println("Error loading image:" +e.getMessage());
@@ -68,6 +68,7 @@ public class Display extends BaseScreen{
                     @Override
                     public void actionPerformed(ActionEvent e){
                         gameLogic.move(grid, x, y, buttons);
+                        // gameLogic.resetColour();
                         // moveCount++;
 
                     }
