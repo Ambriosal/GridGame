@@ -19,10 +19,12 @@ public class Display extends BaseScreen{
 
     private GameLogic gameLogic;
     private JButton[][] buttons;
+    private GridState gridState;
     // private int moveCount;
 
-    Display(GameLogic gameLogic) {
+    Display(GameLogic gameLogic, GridState gridState) {
         this.gameLogic = gameLogic;
+        this.gridState = gridState;
         if(gameLogic == null){
             throw new IllegalArgumentException("Game logic null!! fix this hoe!!");
         }
@@ -48,6 +50,7 @@ public class Display extends BaseScreen{
 
         buttons = new JButton[row][col];
         JPanel gridPanel = new JPanel(new GridLayout(row, col));
+        // GridState currentGrid;
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -61,16 +64,17 @@ public class Display extends BaseScreen{
                 }
                 buttons[i][j].setBackground(new Color(200, 100, 100));
                 buttons[i][j].setPreferredSize(new Dimension(128, 128));
-                //Adding Action listeners to each button
                 int x = i;
                 int y = j;
+                //Adding Action listeners to each button
                 buttons[i][j].addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e){
-                        gameLogic.move(grid, x, y, buttons);
-                        // gameLogic.resetColour();
-                        // moveCount++;
-
+                        //movement
+                        int[][] updated = gameLogic.move(grid, x, y, buttons);
+                        // GridState.setCurrentGrid(grid);
+                        boolean done = gameLogic.levelWin(updated, gridState);
+                        System.out.println(done);
                     }
                 });
                 

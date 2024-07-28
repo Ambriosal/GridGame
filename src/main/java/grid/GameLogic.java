@@ -3,6 +3,7 @@ package grid;
 import java.io.IOException;
 import javax.swing.JButton;
 import java.util.HashMap;
+import java.util.Arrays;
 
 public class GameLogic {
 
@@ -67,25 +68,21 @@ public class GameLogic {
         won = w;
     }
 
-    boolean levelWin(GridState state) {
+    boolean levelWin(int[][] grid, GridState state) {
         int size = state.gridSize();
-        boolean done = true;
+        boolean done = false;
 
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (GridState.getCurrentGrid()[i][j] != GridState.answerGrid()[i][j]) {
-                    System.out.println("Cell not completed.");
-                    done = false;
-                    return done;
-                }
-            }
+        if (Arrays.deepEquals(grid, GridState.answerGrid())){
+            done = true;
         }
+        // System.out.println(Arrays.deepToString(GridState.answerGrid()));
+
         // done is true
         return done;
     }
 
-    void updateWins(GridState state) {
-        boolean levelCompleted = levelWin(state);
+    void updateWins(int[][] grid, GridState state) {
+        boolean levelCompleted = levelWin(grid,state);
 
         if (levelCompleted) {
             int win = 0;
@@ -108,10 +105,13 @@ public class GameLogic {
         }
     }
 
-    void move(int[][] grid, int x, int y, JButton[][] buttons) {
+    int[][] move(int[][] grid, int x, int y, JButton[][] buttons) {
 
-        // int colour = -1;
+        //calls hashmap
         setShoe();
+
+        //get currentgrid state
+        int[][] current = GridState.getCurrentGrid();
 
         if (colour == -1) {
             System.err.println("Colour was -ve");
@@ -132,17 +132,18 @@ public class GameLogic {
                 try {
                     //UPDATE TILE COLOUR
                     buttons[x][y].setIcon(Display.createImageIcon("shoe" + colour + ".png"));
+                    //update array
+                    current[x][y] = colour;
+
                 } catch (IOException e) {
                     e.printStackTrace();
                     System.out.println("Shit ain't working.");
                 }
             }
-
         }
-    }
+        GridState.setCurrentGrid(current);
 
-    void resetColour() {
-        colour = -1;
+        return current;
     }
 
 }

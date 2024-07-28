@@ -29,6 +29,19 @@ public class GridState extends Mode {
         return currentGrid;
     }
 
+    int[][] getLevelGrid() {
+        int[][] lvlGrid;
+        if (getLevel() <= 3) {
+            lvlGrid = easy.getGrid();
+        } else if (getLevel()  >= 4 && getLevel() <= 6) {
+           lvlGrid = med.getGrid();
+        } else {
+            lvlGrid = hard.getGrid();
+        }
+        return lvlGrid;
+
+    }
+
     int[][] changeGridMode(char modeSelect) {
 
         if (modeSelect == 'e') {
@@ -66,9 +79,9 @@ public class GridState extends Mode {
         return size;
     }
 
-    //Init grid
+    // Init grid
 
-    void initGrid(){
+    void initGrid() {
         int size = gridSize();
         currentGrid = new int[size][size];
     }

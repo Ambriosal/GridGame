@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import java.util.Arrays;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,13 +21,11 @@ public class GameScreen extends BaseScreen {
         screenM = screenManager;
         gridS = gridState;
         this.game = new GameLogic();
-        this.display = new Display(game);
+        this.display = new Display(game, gridS);
 
         JLabel titleText = new JLabel("This is the game screen.");
 
         int[][] gridArray;
-        int[][] resetGrid;
-        resetGrid = GridState.getCurrentGrid();
         gridArray = GridState.getCurrentGrid();
         int l = gridState.getLevel();
         char m = gridState.getMode();
@@ -46,7 +45,7 @@ public class GameScreen extends BaseScreen {
             @Override
             public void actionPerformed(ActionEvent e){
                 remove(gridPanel); //Removes old grid
-                gridPanel = display.displayGrid(resetGrid, size, size);
+                gridPanel = display.displayGrid(gridS.getLevelGrid(), size, size);//resets
                 add(gridPanel);
                 //Revalidate and repaint container
                 revalidate();
@@ -64,11 +63,17 @@ public class GameScreen extends BaseScreen {
             }
         });
 
-        //Move Counter
-        JLabel moveCount = new JLabel();
+        //Win update
+        JLabel win = new JLabel("here");
+        System.out.println(Arrays.deepToString(gridArray));
+        
+        if (Arrays.deepEquals(gridArray, GridState.answerGrid())){
+            win.setText("Win level!");
+        }
 
         add(reset);
         add(back);
+        add(win);
         add(titleText);
         add(gridPanel);
     }
