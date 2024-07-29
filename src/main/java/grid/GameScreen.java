@@ -35,9 +35,9 @@ public class GameScreen extends BaseScreen {
         }
 
         int size = gridState.gridSize();
+        JLabel win = new JLabel("here");
 
-        gridPanel = display.displayGrid(gridArray, size, size);
-
+        gridPanel = display.displayGrid(gridArray, size, size, win);
 
         //Reset button
         JButton reset = new JButton("Reset");
@@ -45,7 +45,7 @@ public class GameScreen extends BaseScreen {
             @Override
             public void actionPerformed(ActionEvent e){
                 remove(gridPanel); //Removes old grid
-                gridPanel = display.displayGrid(gridS.getLevelGrid(), size, size);//resets
+                gridPanel = display.displayGrid(gridS.getLevelGrid(), size, size, win);//resets
                 add(gridPanel);
                 //Revalidate and repaint container
                 revalidate();
@@ -64,12 +64,6 @@ public class GameScreen extends BaseScreen {
         });
 
         //Win update
-        JLabel win = new JLabel("here");
-        System.out.println(Arrays.deepToString(gridArray));
-        
-        if (Arrays.deepEquals(gridArray, GridState.answerGrid())){
-            win.setText("Win level!");
-        }
 
         add(reset);
         add(back);

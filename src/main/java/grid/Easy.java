@@ -6,7 +6,7 @@ public class Easy extends Mode implements Grid {
         // default constructor
     }
 
-    public int[][] getGrid() { // returns grid for specified levl
+    public int[][] getGrid() { // returns grid for specified level
 
         if (getLevel() == 1) {
             return new int[][]{{0, 0, 0, 1, 4},

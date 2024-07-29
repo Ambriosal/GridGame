@@ -3,6 +3,7 @@ package grid;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +21,7 @@ public class Display extends BaseScreen{
     private GameLogic gameLogic;
     private JButton[][] buttons;
     private GridState gridState;
+    // private JLabel win;
     // private int moveCount;
 
     Display(GameLogic gameLogic, GridState gridState) {
@@ -46,9 +48,10 @@ public class Display extends BaseScreen{
     }
 
 
-    JPanel displayGrid(int[][] grid, int row, int col) {
+    JPanel displayGrid(int[][] grid, int row, int col, JLabel winLabel) {
 
         buttons = new JButton[row][col];
+        // int[][] updatedsend = new int[row][col];
         JPanel gridPanel = new JPanel(new GridLayout(row, col));
         // GridState currentGrid;
 
@@ -75,14 +78,24 @@ public class Display extends BaseScreen{
                         // GridState.setCurrentGrid(grid);
                         boolean done = gameLogic.levelWin(updated, gridState);
                         System.out.println(done);
+                        if (done){
+                            winLabel.setText("winner!");
+                        }
+                        // gridState.copyGrid(updatedsend, updated);
                     }
                 });
                 
                 gridPanel.add(buttons[i][j]);
+                // GridState.setCurrentGrid(updatedsend);
             }
         }
 
         return gridPanel;
     }
+
+
+
+
+    
 
 }

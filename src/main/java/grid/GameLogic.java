@@ -31,7 +31,6 @@ public class GameLogic {
         return shoeColour;
     }
     
-
     public GameLogic() {
         // Default constructor
     }
@@ -74,6 +73,7 @@ public class GameLogic {
 
         if (Arrays.deepEquals(grid, GridState.answerGrid())){
             done = true;
+            System.out.println("win!");
         }
         // System.out.println(Arrays.deepToString(GridState.answerGrid()));
 

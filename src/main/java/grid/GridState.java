@@ -1,5 +1,7 @@
 package grid;
 
+import java.util.Arrays;
+
 public class GridState extends Mode {
 
     static char mode = 'e';
@@ -33,8 +35,8 @@ public class GridState extends Mode {
         int[][] lvlGrid;
         if (getLevel() <= 3) {
             lvlGrid = easy.getGrid();
-        } else if (getLevel()  >= 4 && getLevel() <= 6) {
-           lvlGrid = med.getGrid();
+        } else if (getLevel() >= 4 && getLevel() <= 6) {
+            lvlGrid = med.getGrid();
         } else {
             lvlGrid = hard.getGrid();
         }
@@ -84,6 +86,15 @@ public class GridState extends Mode {
     void initGrid() {
         int size = gridSize();
         currentGrid = new int[size][size];
+    }
+
+    int[][] copyGrid(int[][] gridNew, int[][] gridOrg) {
+        gridNew = new int[gridOrg.length][];
+        for (int i = 0; i < gridOrg.length; i++) {
+            gridNew[i] = Arrays.copyOf(gridOrg[i], gridOrg[i].length);
+        }
+    
+        return gridNew;
     }
 
 }
