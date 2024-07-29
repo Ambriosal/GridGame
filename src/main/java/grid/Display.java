@@ -15,19 +15,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-
-public class Display extends BaseScreen{
+public class Display extends BaseScreen {
 
     private GameLogic gameLogic;
     private JButton[][] buttons;
     private GridState gridState;
-    // private JLabel win;
-    // private int moveCount;
 
     Display(GameLogic gameLogic, GridState gridState) {
         this.gameLogic = gameLogic;
         this.gridState = gridState;
-        if(gameLogic == null){
+        if (gameLogic == null) {
             throw new IllegalArgumentException("Game logic null!! fix this hoe!!");
         }
     }
@@ -47,11 +44,9 @@ public class Display extends BaseScreen{
         }
     }
 
-
     JPanel displayGrid(int[][] grid, int row, int col, JLabel winLabel) {
 
         buttons = new JButton[row][col];
-        // int[][] updatedsend = new int[row][col];
         JPanel gridPanel = new JPanel(new GridLayout(row, col));
         // GridState currentGrid;
 
@@ -59,43 +54,37 @@ public class Display extends BaseScreen{
             for (int j = 0; j < col; j++) {
 
                 try {
-                    buttons[i][j] = new JButton(createImageIcon("shoe"+grid[i][j]+".png"));
+                    buttons[i][j] = new JButton(createImageIcon("shoe" + grid[i][j] + ".png"));
                 } catch (IOException e) {
-                    //Change this later
-                    System.err.println("Error loading image:" +e.getMessage());
+                    // Change this later
+                    System.err.println("Error loading image:" + e.getMessage());
                     System.exit(1);
                 }
                 buttons[i][j].setBackground(new Color(200, 100, 100));
                 buttons[i][j].setPreferredSize(new Dimension(128, 128));
                 int x = i;
                 int y = j;
-                //Adding Action listeners to each button
-                buttons[i][j].addActionListener(new ActionListener(){
+                // Adding Action listeners to each button
+                buttons[i][j].addActionListener(new ActionListener() {
                     @Override
-                    public void actionPerformed(ActionEvent e){
-                        //movement
+                    public void actionPerformed(ActionEvent e) {
+                        // movement
                         int[][] updated = gameLogic.move(grid, x, y, buttons);
                         // GridState.setCurrentGrid(grid);
                         boolean done = gameLogic.levelWin(updated, gridState);
                         System.out.println(done);
-                        if (done){
+                        if (done) {
                             winLabel.setText("winner!");
+                            gameLogic.updateWins(grid, gridState);
                         }
-                        // gridState.copyGrid(updatedsend, updated);
                     }
                 });
-                
+
                 gridPanel.add(buttons[i][j]);
-                // GridState.setCurrentGrid(updatedsend);
             }
         }
 
         return gridPanel;
     }
-
-
-
-
-    
 
 }

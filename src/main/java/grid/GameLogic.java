@@ -82,25 +82,36 @@ public class GameLogic {
     }
 
     void updateWins(int[][] grid, GridState state) {
-        boolean levelCompleted = levelWin(grid,state);
+        boolean levelCompleted = levelWin(grid, state);
 
-        if (levelCompleted) {
+        if (levelCompleted){
             int win = 0;
 
-            if (state.getMode() == 'h') {
-                win = getHardWins() + 1;
-                setHardWins(win);
-            } else if (state.getMode() == 'm') {
-                win = getMedWins() + 1;
-                setMedWins(win);
-            } else {
-                win = getEasyWins() + 1;
-                setEasyWins(win);
+            switch (state.getMode()){
+                case 'h':
+                    win = getHardWins() + 1;
+                    setHardWins(win);
+                    break;
+                case 'm':
+                    win = getMedWins() + 1;
+                    setMedWins(win);
+                    break;
+                case 'e':
+                    win = getEasyWins() + 1;
+                    setEasyWins(win);
+                    break;
+                default:
+                    throw new IllegalStateException("Unknown mode: " + state.getMode());
             }
 
-            if (win == 3) {
+            System.out.println("win lvl: "+ win);    
+            if (win == 3){
                 System.out.println("Mode completed.");
-                // Additional logic for mode win, if needed
+            } else {
+                //Update grid to next level
+                state.setLevel(state.getLevel() + 1);
+                //Update current grid state
+                state.getLevelGrid();
             }
         }
     }

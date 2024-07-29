@@ -16,6 +16,7 @@ public class GameScreen extends BaseScreen {
     private GameLogic game;
     private Display display;
     private JPanel gridPanel;
+    private JLabel winLabel;
 
     public GameScreen(ScreenManager screenManager, GridState gridState){
         screenM = screenManager;
@@ -50,7 +51,6 @@ public class GameScreen extends BaseScreen {
                 //Revalidate and repaint container
                 revalidate();
                 repaint();
-
             }
         });
 
@@ -72,8 +72,12 @@ public class GameScreen extends BaseScreen {
         add(gridPanel);
     }
 
-
-    // private void moveCountUpdate (int num){
-        
-    // }
+    public void refreshGrid() {
+        remove(gridPanel);
+        int size = gridS.gridSize();
+        gridPanel = display.displayGrid(GridState.getCurrentGrid(), size, size, winLabel);
+        add(gridPanel);
+        revalidate();
+        repaint();
+    }
 }
