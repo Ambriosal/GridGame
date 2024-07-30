@@ -30,7 +30,7 @@ public class GameLogic {
 
         return shoeColour;
     }
-    
+
     public GameLogic() {
         // Default constructor
     }
@@ -68,26 +68,27 @@ public class GameLogic {
     }
 
     boolean levelWin(int[][] grid, GridState state) {
-        int size = state.gridSize();
         boolean done = false;
 
-        if (Arrays.deepEquals(grid, GridState.answerGrid())){
+        if (Arrays.deepEquals(grid, GridState.answerGrid())) {
             done = true;
-            System.out.println("win!");
+            System.out.println("levelWin method - win!");
         }
-        // System.out.println(Arrays.deepToString(GridState.answerGrid()));
+        System.out.println(Arrays.deepToString(grid));
+        System.out.println(Arrays.deepToString(GridState.answerGrid()));
+        System.out.println();
 
-        // done is true
         return done;
     }
 
     void updateWins(int[][] grid, GridState state) {
-        boolean levelCompleted = levelWin(grid, state);
 
-        if (levelCompleted){
+        boolean levelCompleted = levelWin(grid, state);
+        System.out.println("updateWins - " + levelCompleted);
+        if (levelCompleted) {
             int win = 0;
 
-            switch (state.getMode()){
+            switch (state.getMode()) {
                 case 'h':
                     win = getHardWins() + 1;
                     setHardWins(win);
@@ -104,46 +105,43 @@ public class GameLogic {
                     throw new IllegalStateException("Unknown mode: " + state.getMode());
             }
 
-            System.out.println("win lvl: "+ win);    
-            if (win == 3){
+            System.out.println("Level " + win + " won");
+            if (win == 3) {
                 System.out.println("Mode completed.");
             } else {
-                //Update grid to next level
-                state.setLevel(state.getLevel() + 1);
-                //Update current grid state
+                // Update grid to next level
+                win = state.getLevel() + 1;
+                state.setLevel(win);
+                System.out.println("Level: " + win);
+                // Update current grid state
                 state.getLevelGrid();
             }
         }
     }
 
     int[][] move(int[][] grid, int x, int y, JButton[][] buttons) {
-
-        //calls hashmap
+        // calls hashmap
         setShoe();
 
-        //get currentgrid state
+        // get currentgrid state
         int[][] current = GridState.getCurrentGrid();
 
         if (colour == -1) {
-            System.err.println("Colour was -ve");
             if (grid[x][y] != 0) {
                 colour = shoeColour.get(grid[x][y]);
             }
-
         } else {
-
-            //IF SHOE IS CLICKED
-            if((grid[x][y] >= 1 && grid[x][y] <=5) || grid[x][y] == 11){
-                //acquire colour
+            // IF SHOE IS CLICKED
+            if ((grid[x][y] >= 1 && grid[x][y] <= 5) || grid[x][y] == 11) {
+                // acquire colour
                 colour = shoeColour.get(grid[x][y]);
             }
             // IF A MUTUABLE TILE IS CLICKED
-            else if (grid[x][y] == 0 || (grid[x][y] >= 6 && grid[x][y] <= 10) || grid[x][y] == 12 ) {
-  
+            else if (grid[x][y] == 0 || (grid[x][y] >= 6 && grid[x][y] <= 10) || grid[x][y] == 12) {
                 try {
-                    //UPDATE TILE COLOUR
+                    // UPDATE TILE COLOUR
                     buttons[x][y].setIcon(Display.createImageIcon("shoe" + colour + ".png"));
-                    //update array
+                    // update array
                     current[x][y] = colour;
 
                 } catch (IOException e) {

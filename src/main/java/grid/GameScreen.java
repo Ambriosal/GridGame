@@ -16,7 +16,7 @@ public class GameScreen extends BaseScreen {
     private GameLogic game;
     private Display display;
     private JPanel gridPanel;
-    private JLabel winLabel;
+    // private JLabel winLabel;
 
     public GameScreen(ScreenManager screenManager, GridState gridState){
         screenM = screenManager;
@@ -36,7 +36,7 @@ public class GameScreen extends BaseScreen {
         }
 
         int size = gridState.gridSize();
-        JLabel win = new JLabel("here");
+        JLabel win = new JLabel("");
 
         gridPanel = display.displayGrid(gridArray, size, size, win);
 
@@ -63,21 +63,28 @@ public class GameScreen extends BaseScreen {
             }
         });
 
-        //Win update
+        JButton next = new JButton("Next");
+        next.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                int[][] newLvlGrid = new int[size][size];
+                GridState.setCurrentGrid(gridS.copyGrid(newLvlGrid, gridS.getLevelGrid()));
+                // win.setText("here lv: " + gridS.getLevel());
+                remove(gridPanel); // removes old grid
+                gridPanel = display.displayGrid(gridS.getLevelGrid(), size, size, win);
+                win.setText("");
+                add(gridPanel);
+                revalidate();
+                repaint();
+            }
+        });
 
         add(reset);
+        add(next);
         add(back);
         add(win);
         add(titleText);
         add(gridPanel);
     }
 
-    public void refreshGrid() {
-        remove(gridPanel);
-        int size = gridS.gridSize();
-        gridPanel = display.displayGrid(GridState.getCurrentGrid(), size, size, winLabel);
-        add(gridPanel);
-        revalidate();
-        repaint();
-    }
+
 }

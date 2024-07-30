@@ -70,12 +70,12 @@ public class Display extends BaseScreen {
                     public void actionPerformed(ActionEvent e) {
                         // movement
                         int[][] updated = gameLogic.move(grid, x, y, buttons);
-                        // GridState.setCurrentGrid(grid);
+                        // boolean done = false;
                         boolean done = gameLogic.levelWin(updated, gridState);
-                        System.out.println(done);
                         if (done) {
-                            winLabel.setText("winner!");
-                            gameLogic.updateWins(grid, gridState);
+                            gameLogic.updateWins(updated, gridState);
+                            winLabel.setText("Level won! next level: " + gridState.getLevel());
+                            // done = false;
                         }
                     }
                 });
