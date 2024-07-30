@@ -20,6 +20,7 @@ public class Display extends BaseScreen {
     private GameLogic gameLogic;
     private JButton[][] buttons;
     private GridState gridState;
+    // private JLabel infoLabel;
 
     Display(GameLogic gameLogic, GridState gridState) {
         this.gameLogic = gameLogic;
@@ -44,7 +45,8 @@ public class Display extends BaseScreen {
         }
     }
 
-    JPanel displayGrid(int[][] grid, int row, int col, JLabel winLabel) {
+    JPanel displayGrid(int[][] grid, int row, int col, JLabel infoLabel) {
+        // this.infoLabel = infoLabel;
 
         buttons = new JButton[row][col];
         JPanel gridPanel = new JPanel(new GridLayout(row, col));
@@ -73,10 +75,11 @@ public class Display extends BaseScreen {
                         // boolean done = false;
                         boolean done = gameLogic.levelWin(updated, gridState);
                         if (done) {
-                            gameLogic.updateWins(updated, gridState);
-                            winLabel.setText("Level won! next level: " + gridState.getLevel());
+                            gameLogic.updateWins(updated, gridState, done);
+                            infoLabel.setText("Level won! next level: " + gridState.getLevel());
                             // done = false;
                         }
+                        updateInfoLabel(infoLabel);
                     }
                 });
 
@@ -85,6 +88,18 @@ public class Display extends BaseScreen {
         }
 
         return gridPanel;
+    }
+
+    // Info text updates
+    void updateInfoLabel(JLabel infoLabel) {
+        if (gameLogic.getEasyWins() == 3) {
+            infoLabel.setText("Easy game mode completed.");
+        } else if (gameLogic.getMedWins() == 3) {
+            infoLabel.setText("Medium game mode completed.");
+        } else if (gameLogic.getHardWins() == 3) {
+            infoLabel.setText("Hard game mode completed.");
+        }
+
     }
 
 }

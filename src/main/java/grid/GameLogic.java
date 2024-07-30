@@ -9,7 +9,6 @@ public class GameLogic {
 
     /* FIELDS */
 
-    // private GridState state = new GridState();
     private boolean won = false;
     private int easyWins = 0;
     private int medWins = 0;
@@ -35,7 +34,7 @@ public class GameLogic {
         // Default constructor
     }
 
-    private int getEasyWins() {
+    int getEasyWins() {
         return easyWins;
     }
 
@@ -43,7 +42,7 @@ public class GameLogic {
         easyWins = num;
     }
 
-    private int getMedWins() {
+    int getMedWins() {
         return medWins;
     }
 
@@ -51,7 +50,7 @@ public class GameLogic {
         medWins = num;
     }
 
-    private int getHardWins() {
+    int getHardWins() {
         return hardWins;
     }
 
@@ -72,20 +71,15 @@ public class GameLogic {
 
         if (Arrays.deepEquals(grid, GridState.answerGrid())) {
             done = true;
-            System.out.println("levelWin method - win!");
         }
-        System.out.println(Arrays.deepToString(grid));
-        System.out.println(Arrays.deepToString(GridState.answerGrid()));
         System.out.println();
 
         return done;
     }
 
-    void updateWins(int[][] grid, GridState state) {
+    void updateWins(int[][] grid, GridState state, boolean won) {
 
-        boolean levelCompleted = levelWin(grid, state);
-        System.out.println("updateWins - " + levelCompleted);
-        if (levelCompleted) {
+        if (won) {
             int win = 0;
 
             switch (state.getMode()) {
@@ -112,7 +106,6 @@ public class GameLogic {
                 // Update grid to next level
                 win = state.getLevel() + 1;
                 state.setLevel(win);
-                System.out.println("Level: " + win);
                 // Update current grid state
                 state.getLevelGrid();
             }

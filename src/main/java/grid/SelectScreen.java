@@ -101,7 +101,7 @@ public class SelectScreen extends BaseScreen{
 
     
     private void progressUpdate(JProgressBar progress){
-        gridState.setProgress(11);
+        gridState.setProgress(11*gridState.getLevel());
         progress.setValue(gridState.getProgress());
         progress.setStringPainted(true);
     }
